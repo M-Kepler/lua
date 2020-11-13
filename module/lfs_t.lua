@@ -15,4 +15,4 @@ function attrdir(path)
     end
 end
 
-attrdir(".")
+attrdir("..")
