@@ -1,15 +1,15 @@
 -- local mod = require("module")
 
-function test_table_diff()
-    tb1 = {}
+local function test_table_diff()
+    local tb1 = {}
     tb1['a'] = 1
     tb1['b'] = 2
-    tb2 = {}
+    local tb2 = {}
     tb2['c'] = 3
     tb2['a'] = 4
 end
 
-function allwords()
+local function allwords()
     local line = io.read() -- 当前行
     local pos = 1 -- 当前行位置
     return function()
@@ -72,7 +72,7 @@ local function print_r(t)
     print()
 end
 
-function sortbygrade(names, grades)
+local function sortbygrade(names, grades)
     table.sort(
         names,
         function(n1, n2)
@@ -124,7 +124,7 @@ local function test_repeat()
 end
 
 local function test_repeat2()
-    count = 10
+    local count = 10
     for i=1, count, 2 do
         repeat
             if i == 5 then
@@ -136,8 +136,8 @@ local function test_repeat2()
 end
 
 local function test_sort()
-    names = {"peter", "marry", "huangjj"}
-    grades = {peter = 10, marry = 39, huangjj = 100}
+    local names = {"peter", "marry", "huangjj"}
+    local grades = {peter = 10, marry = 39, huangjj = 100}
     print_r(names)
     print_r(grades)
     sortbygrade(names, grades)
