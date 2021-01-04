@@ -1,5 +1,6 @@
 -- local mod = require("module")
 
+
 local function test_table_diff()
     local tb1 = {}
     tb1['a'] = 1

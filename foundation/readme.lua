@@ -260,7 +260,8 @@ return M
 
 -- 以上
 -- 回到主文件
-local mod = require('mod') -- 运行 mod.lua 中的代码
+-- 运行 mod.lua 中的代码
+local mod = require('mod')
 -- 操作同下
 local mod = (function()
 -- 像 Javascript 一样
