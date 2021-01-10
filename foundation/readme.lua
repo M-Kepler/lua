@@ -6,21 +6,6 @@
 -- 1. 变量 & 控制流
 ----------
 
-num = 23 -- 数字都是双精度
-str = 'aspythonstring' -- 像 Python 一样不可变
-str = "aspythonuse" -- 可以双引号
-str = [[
-       像 Python 的多行注释可用于
-       表示多行字符串一样
-       方便
-   ]]
-bol = nil -- 未定义；支持垃圾回收
-
--- 缩进只为易读性，像 Matlab 一样以 end 结尾
-while num < 50 do
-    num = num + 1 -- 没有 ++ 或 += 自增操作符号
-end
-
 -- IF 条件开关
 if num > 40 then
     print('> 40')

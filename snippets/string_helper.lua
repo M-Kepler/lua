@@ -12,7 +12,4 @@ end
 function string_helper.trim()
 end
 
-local function main()
-end
-
-main()
+return string_helper
