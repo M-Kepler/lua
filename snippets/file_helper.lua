@@ -2,7 +2,7 @@
 local file_helper = {}
 
 ---获取路径下的文件列表
----@param path 路径
+---@param path string 路径
 ---@return table
 function file_helper.get_file_list(path)
     local ls_output = io.popen("ls " .. path .. "/")
@@ -17,8 +17,8 @@ function file_helper.get_file_list(path)
 end
 
 ---获取目录下全部文件
----@param folder_path 目录路径
----@param result_path 输出结果
+---@param folder_path string 目录路径
+---@param result_path string 输出结果
 function file_helper.get_all_files_in_folder(folder_path, result_path)
     local file_tb = {}
     local file_list = {}
@@ -39,20 +39,20 @@ end
 
 
 ---删除文件夹下的所有文件 rm -rf
----@param folder_path string
+---@param folder_path string 文件路径
 function file_helper.delete_all_folder(folder_path)
     os.execute("rm -rf " .. folder_path)
 end
 
 ---删除空文件夹或文件
----@param folder_path 文件路径
-function file_helper.delete_all_folder(folder_path)
+---@param folder_path string 文件路径
+function file_helper.delete_empty_folder(folder_path)
     os.remove(folder_path)
 end
 
 
 ---判断文件是否存在
----@param file_path 文件路径
+---@param file_path string 文件路径
 function file_helper.is_file_exist(file_path)
     local fd = io.open(file_path, "w")
     return fd ~= nil and fd:close()

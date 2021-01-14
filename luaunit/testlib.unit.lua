@@ -1,32 +1,32 @@
 EXPORT_ASSERT_TO_GLOBALS = true
-luaunit = require "luaunit"
+local luaunit = require "luaunit"
 --引入测试框架luaunit
 
 --[[
 UT
 --]]
-unit = require("testlib")
+local test_lib = require ("testlib")
 --包含所要测试的函数库（测试目标）
 
 -- 以下按照table分类测试用例（分组TestAdd与TestDiv）
 TestAdd = {}
 function TestAdd:testAddPositive()
     local args = {1, 1}
-    luaunit.assertEquals(add(1, 1), 2)
+    luaunit.assertEquals(test_lib.add(1, 1), 2)
 end
 
 function TestAdd:testAddZero()
-    luaunit.assertEquals(add(1, 0), 0)
-    luaunit.assertEquals(add(0, 5), 0)
-    luaunit.assertEquals(add(0, 0), 0)
+    luaunit.assertEquals(test_lib.add(1, 0), 0)
+    luaunit.assertEquals(test_lib.add(0, 5), 0)
+    luaunit.assertEquals(test_lib.add(0, 0), 0)
 end
 
 function TestAdd:testAddError()
-    luaunit.assertErrorMsgContains("Can only add positive or null numbers, received 2 and -3", add, 2, -3)
+    luaunit.assertErrorMsgContains("Can only test_lib.add positive or null numbers, received 2 and -3", test_lib.add, 2, -3)
 end
 
 function TestAdd:testAdder()
-    f = adder(3)
+    local f = adder(3)
     luaunit.assertIsFunction(f)
     luaunit.assertEquals(f(2), 5)
 end
@@ -34,17 +34,17 @@ end
 
 TestDiv = {}
 function TestDiv:testDivPositive()
-    luaunit.assertEquals(div(4, 2), 2)
+    luaunit.assertEquals(test_lib.div(4, 2), 2)
 end
 
 function TestDiv:testDivZero()
-    luaunit.assertEquals(div(4, 0), 0)
-    luaunit.assertEquals(div(0, 5), 0)
-    luaunit.assertEquals(div(0, 0), 0)
+    luaunit.assertEquals(test_lib.div(4, 0), 0)
+    luaunit.assertEquals(test_lib.div(0, 5), 0)
+    luaunit.assertEquals(test_lib.div(0, 0), 0)
 end
 
 function TestDiv:testDivError()
-    luaunit.assertErrorMsgContains("Can only divide positive or null numbers, received 2 and -3", div, 2, -3)
+    luaunit.assertErrorMsgContains("Can only test_lib.divide positive or null numbers, received 2 and -3", test_lib.div, 2, -3)
 end
 -- end of table TestDiv
 

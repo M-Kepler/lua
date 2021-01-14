@@ -1,6 +1,6 @@
-require "lfs"
+local lfs = require "lfs"
 
-function attrdir(path)
+local function attrdir(path)
     for file in lfs.dir(path) do
         if file ~= "." and file ~= ".." then -- 过滤linux目录下的"."和".."目录
             local f = path .. "/" .. file
