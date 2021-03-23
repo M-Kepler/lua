@@ -52,10 +52,60 @@ end
 
 
 ---判断文件是否存在
+---@param path string 文件路径
+---@return boolean
+function file_helper.is_path_exist(path)
+    if not path then
+        return false
+    end
+    local file, _ = io.open(path)
+    if file == nil then
+        return false
+    end
+    file:close()
+    return true
+end
+
+
+---写文件
 ---@param file_path string 文件路径
-function file_helper.is_file_exist(file_path)
-    local fd = io.open(file_path, "w")
-    return fd ~= nil and fd:close()
+---@param contents string 文件内容
+---@return boolean
+function file_helper.write_file(file_path, contents)
+    if not file_path then
+        return false
+    end
+    local tmp_file_path = file_path .. ".tmp"
+    local fd = io.open(tmp_file_path, "w")
+    if not fd then
+        return false
+    end
+    fd:write(contents)
+    local ret = fd:flush()
+    if not ret then
+        fd:close()
+        return false
+    end
+    fd:close()
+    local rec = os.rename(tmp_file_path, file_path)
+    if not rec then
+        return false
+    end
+    return true
+end
+
+
+---读文件
+---@param file_path string 文件路径
+---@return string
+function file_helper.read_file(file_path)
+    local fd = io.open(file_path, "r")
+    if fd == nil then
+        return nil
+    end
+    local contents = fd:read("*all")
+    fd:close()
+    return contents
 end
 
 return file_helper

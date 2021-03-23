@@ -1,6 +1,9 @@
 
 local table_helper = {}
 
+
+---打印 table
+---@param t table
 function table_helper.print_t(t)
     local print_t_cache = {}
     local function sub_print_t(t, indent)
@@ -32,6 +35,33 @@ function table_helper.print_t(t)
     else
         sub_print_t(t, "  ")
     end
+end
+
+
+---判断是否是控标
+---@param t table 表
+---@return boolean
+function table_helper.is_empty_table(t)
+    if not t or type(t) ~= "table" then
+        return true
+    end
+    return _G.next(t) == nil
+end
+
+
+---合并两个 table， 把新表的内容更新到旧表的内容中, 返回并集
+---@param basic_tb table 基准表
+---@param new_tb table 新表
+---@return table
+function table_helper:merge(basic_tb, new_tb)
+    for key, val in ipairs(new_tb) do
+        if type(val) == "table" and type(basic_tb[key] or false ) == "table" then
+            self.merge(basic_tb, new_tb)
+        else
+            basic_tb[key] = val
+        end
+    end
+    return basic_tb
 end
 
 

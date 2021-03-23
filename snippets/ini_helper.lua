@@ -1,5 +1,9 @@
 local ini_helper = {}
 
+
+---解析加载 ini 文件
+---@param file_name string 文件路径
+---@return table
 function ini_helper.load(file_name)
     assert(type(file_name) == "string", 'Parameter "file_name" must be a string.')
     local file = assert(io.open(file_name, "r"), "Error loading file : " .. file_name)
@@ -31,7 +35,10 @@ function ini_helper.load(file_name)
     return data
 end
 
---写全部
+
+---保存 ini 文件
+---@param file_name string 保存文件路径
+---@param data table 文件内容
 function ini_helper.save(file_name, data)
     assert(type(file_name) == "string", 'Parameter "file_name" must be a string.')
     assert(type(data) == "table", 'Parameter "data" must be a table.')
@@ -48,7 +55,12 @@ function ini_helper.save(file_name, data)
     file:close()
 end
 
---读单条
+
+---读取 ini 配置
+---@param ini_path string 文件路径
+---@param section string 配置节点
+---@param key string 配置的键
+---@return string 配置的值
 function ini_helper.read(ini_path, section, key)
     local data = ini_helper.load(ini_path)
     if data and data[section] and data[section][key] then
@@ -57,7 +69,12 @@ function ini_helper.read(ini_path, section, key)
     return nil
 end
 
---写单条
+
+---修改 ini 配置
+---@param ini_path string 文件路径
+---@param section string 配置节点
+---@param key string 配置的键
+---@param value string 配置的值
 function ini_helper.write(ini_path, section, key, value)
     local data = ini_helper.load(ini_path)
     data[section][key] = value
