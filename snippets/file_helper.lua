@@ -1,4 +1,3 @@
-
 local file_helper = {}
 
 ---获取路径下的文件列表
@@ -37,7 +36,6 @@ function file_helper.get_all_files_in_folder(folder_path, result_path)
     result_fd:close()
 end
 
-
 ---删除文件夹下的所有文件 rm -rf
 ---@param folder_path string 文件路径
 function file_helper.delete_all_folder(folder_path)
@@ -49,7 +47,6 @@ end
 function file_helper.delete_empty_folder(folder_path)
     os.remove(folder_path)
 end
-
 
 ---判断文件是否存在
 ---@param path string 文件路径
@@ -65,7 +62,6 @@ function file_helper.is_path_exist(path)
     file:close()
     return true
 end
-
 
 ---写文件
 ---@param file_path string 文件路径
@@ -93,7 +89,6 @@ function file_helper.write_file(file_path, contents)
     end
     return true
 end
-
 
 ---读文件
 ---@param file_path string 文件路径
